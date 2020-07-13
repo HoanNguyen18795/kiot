@@ -1,9 +1,9 @@
 pipeline {
      agent any
      stages {
-          stage('Compile') {
+          stage('Clean') {
                steps {
-                    sh "./gradlew compileJava"
+                    sh "./gradlew clean --no-daemon"
                }
           }
           stage('Unit test') {
@@ -13,7 +13,7 @@ pipeline {
           }
 		stage('Package') {
 			 steps {
-				  sh "./gradlew build"
+				  sh "./gradlew -Pprod -Pwar bootWar -PnodeInstall --no-daemon"
 			 }
 		}
 		stage('Docker build') {
@@ -29,7 +29,7 @@ pipeline {
 		}
 		stage('Deploy to staging') {
 			 steps {
-				  sh "docker run -d --rm -p 8088:8088 --name kiot hoannk/kiot"
+				  sh "docker run -d -p 8088:8088 --name kiot hoannk/kiot"
 			 }
 		}
 	}
