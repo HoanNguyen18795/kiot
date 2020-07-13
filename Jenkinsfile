@@ -18,18 +18,18 @@ pipeline {
 		}
 		stage('Docker build') {
 			 steps {
-				  sh "docker build -t hoannk/kiot ."
+				  sh "docker build -t hoannk1/kiot ."
 			 }
 		}
 		stage('Docker push') {
 			 steps {
 				sh "docker login -u hoannk1 -p Kingofwarlock123." 
-				sh "docker push hoannk/kiot"
+				sh "docker push hoannk1/kiot"
 			 }
 		}
 		stage('Deploy to staging') {
 			 steps {
-				  sh "docker run -d -p 8088:8088 --name kiot hoannk/kiot"
+				  sh "docker run -d -p 8088:8088 --name kiot hoannk1/kiot"
 			 }
 		}
 	}
