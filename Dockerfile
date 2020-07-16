@@ -4,4 +4,4 @@ ENV SPRING_OUTPUT_ANSI_ENABLED=ALAWAYS \
 	JAVA_OPTS=""
 COPY build/libs/kiot-0.0.1-SNAPSHOT.war app.war
 EXPOSE 8088
-ENTRYPOINT ["java", "-war", "app.war"]
+ENTRYPOINT ["java", "-jar", "app.war"]
