@@ -13,7 +13,7 @@ pipeline {
           }
 		stage('Package') {
 			 steps {
-				  sh "./gradlew -Pprod -Pwar bootWar -PnodeInstall --no-daemon"
+				  sh "./gradlew -Pdev -Pwar bootWar -PnodeInstall --no-daemon"
 			 }
 		}
 		stage('Docker build') {
