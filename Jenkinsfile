@@ -29,6 +29,7 @@ pipeline {
 		}
 		stage('Deploy to staging') {
 			 steps {
+				  sh "docker rm $(docker ps -a -q)"
 				  sh "docker run -d -p 8088:8088 --name kiot hoannk1/kiot:latest"
 			 }
 		}
